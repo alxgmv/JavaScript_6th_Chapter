@@ -1,27 +1,33 @@
+// 'use strict'
 let firstName;
 let lastName;
-// let userList = new userList();
-function user(firstName, lastName) {
-  this.firstName = firstName,
-  this.lastName = lastName,
-  regDate = new Date();
-  return function userLine() {
-    let l = this.firstName + ' | ' + this.lastName + ' | ' + this.regDate
-    return l;
+let user = new User(firstName, lastName);
+let userlist = new UserList();
+for (;firstName != null;) {
+  firstName = prompt('Enter your name');
+  lastName = prompt('Enter your surname');
+  userlist.add(user);
+}
+
+function User(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.regDate = new Date();
+  return this.userLine = function() {
+    return this.firstName + ' | ' + this.lastName + ' | ' + this.regDate
   }
-};
-function userList() {
+}
+User();
+console.log(userLine());
+
+function UserList() {
   this.users = [],
-  this.add =  function(user) {
-    this.users.push(new user(firstName,lastName))
+  this.add =  function() {
+    this.users.push(user(firstName, lastName))
   },
-  getAllUsers = function() {
+  this.getAllUsers = function() {
     return this.users;
   }
 };
-for(;firstName !== null;) {
-  firstName = prompt('Enter your name');
-  lastName = prompt('Enter your surname');
-  userList.add;
-};
-console.log(userList.getAllUsers);
+UserList();
+console.log(getAllUsers());
