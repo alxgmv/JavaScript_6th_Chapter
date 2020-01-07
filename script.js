@@ -1,33 +1,36 @@
-// 'use strict'
-let firstName;
-let lastName;
-let user = new User(firstName, lastName);
-let userlist = new UserList();
-for (;firstName != null;) {
-  firstName = prompt('Enter your name');
-  lastName = prompt('Enter your surname');
-  userlist.add(user);
-}
-
+ // 'use strict'
 function User(firstName, lastName) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.regDate = new Date();
-  return this.userLine = function() {
-    return this.firstName + ' | ' + this.lastName + ' | ' + this.regDate
-  }
-}
-User();
-console.log(userLine());
-
+};
+const userList = new UserList();
 function UserList() {
-  this.users = [],
-  this.add =  function() {
-    this.users.push(user(firstName, lastName))
-  },
-  this.getAllUsers = function() {
-    return this.users;
+  this.users = []
+};
+UserList.prototype.add = function(user) {
+  if (user.length !== 2) {
+    alert('Incorect name!')
+  } else {
+    firstName = user.slice(0, 1);
+    lastName = user.slice(1, 2);
+    this.users.push(new User(firstName, lastName))
   }
 };
-UserList();
-console.log(getAllUsers());
+UserList.prototype.getAllUsers = function() {
+  return this.users;
+};
+
+let nameRequest = function() {
+  while(true) {
+    let userName = [];
+    userName = prompt('Enter your name');
+    if (userName === null) {
+      break;
+    }
+    userName = userName.split(' ');
+    userList.add(userName);
+  };
+};
+nameRequest();
+console.log(userList.getAllUsers());
