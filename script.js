@@ -20,17 +20,13 @@ UserList.prototype.add = function(user) {
 UserList.prototype.getAllUsers = function() {
   return this.users;
 };
-
-let nameRequest = function() {
-  while(true) {
-    let userName = [];
-    userName = prompt('Enter your name');
-    if (userName === null) {
-      break;
-    }
-    userName = userName.split(' ');
-    userList.add(userName);
-  };
+while(true) {
+  let userName = [];
+  userName = prompt('Enter your name and surname, divided by SPACE');
+  if (userName === null) {
+    break;
+  }
+  userName = userName.split(' ');
+  userList.add(userName);
 };
-nameRequest();
 console.log(userList.getAllUsers());
