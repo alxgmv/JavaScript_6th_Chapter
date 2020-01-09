@@ -1,4 +1,4 @@
- // 'use strict'
+ 'use strict'
 function User(firstName, lastName) {
   this.firstName = firstName;
   this.lastName = lastName;
@@ -9,24 +9,21 @@ function UserList() {
   this.users = []
 };
 UserList.prototype.add = function(user) {
+  user = user.split(' ');
   if (user.length !== 2) {
     alert('Incorect name!')
   } else {
-    firstName = user.slice(0, 1);
-    lastName = user.slice(1, 2);
-    this.users.push(new User(firstName, lastName))
+    this.users.push(new User(user[0], user[1]))
   }
 };
 UserList.prototype.getAllUsers = function() {
   return this.users;
 };
 while(true) {
-  let userName = [];
-  userName = prompt('Enter your name and surname, divided by SPACE');
+  let userName = prompt('Enter your name and surname, divided by SPACE');
   if (userName === null) {
     break;
   }
-  userName = userName.split(' ');
   userList.add(userName);
 };
 console.log(userList.getAllUsers());
